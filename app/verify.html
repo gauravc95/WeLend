@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Verify Mortgage - Crowd Bank</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Custom fonts for this template -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  
+    <style>
+      * {box-sizing: border-box;}
+      
+      body { 
+        margin: 1px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      .header {
+        overflow: hidden;
+        background-color:dodgerblue;
+        padding: 20px 10px;
+      }
+      
+      .form-label{
+      
+      font-size:18px;
+      color:black;
+          padding-left: 10px;
+      }
+      
+      .form-label-h{
+      
+      font-size:22px;
+      color:green;
+      padding-left: 5px;
+      }
+      
+      
+      select{
+          margin:10px;
+          color:black;
+          text-shadow:0 1px 0 rgba(0,0,0,0.4);
+      }
+      
+      .header a {
+        float: left;
+        color: rgb(253, 253, 253);
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px; 
+        line-height: 25px;
+        border-radius: 4px;
+      }
+      
+      .header a.logo {
+        font-size: 30px;
+        font-weight: bold;
+        padding-bottom: 0%
+      }
+      
+      
+      .header a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      
+      .header-right {
+        float: right;
+      }
+      
+      .header a.active {
+        background-color: blue;
+        color: white;
+      }
+      .intro-divider {
+          width: 1000px;
+          height: 1px;
+          border-top: 1px solid #f8f8f8;
+          border-bottom: 1px solid rgba(0,0,0,0.2);
+      }
+      .header a.nactive {
+        background-color:dodgerblue ;
+        color: white;
+      }
+      
+      @media screen and (max-width: 500px) {
+        .header a {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+        .header-right {
+          float: none;
+        }
+      }
+      
+      * {
+          box-sizing: border-box;
+      }
+      
+      .col-container {
+          display: table;
+          width: 100%;
+          border-spacing: 10px 30px;
+      }
+      .col {
+          display: table-cell;
+          padding: 16px;
+          max-width:25%;
+      }
+      
+      @media only screen and (max-width: 600px) {
+          .col { 
+              display: block;
+              width: 100%;
+          }
+      }
+      
+      
+      </style>
+  </head>
+
+  <body>
+
+    <div class="header">
+      <a style="font-size: 45px" class="logo">WeLend
+      </a>
+      <br>     
+      <br>
+
+      <a style="font-size: 20px" class="logo">Blockchain powered Distributed Lending</a>
+      <div class="header-right">
+        <a class="active" href="file:///home/nihilent/MSCM/mscm/mscm_ui/index.html">Home</a>
+        <a class="nactive" href="file:///home/nihilent/MSCM/mscm/mscm_ui/track.html">Profile </a>
+        <a class="nactive" href="file:///home/nihilent/MSCM/mscm/mscm_ui/track.html">Learn </a>
+        <a class="nactive" href="file:///home/nihilent/MSCM/mscm/mscm_ui/track.html">Get Started </a>
+
+      </div>
+    </div>
+    <br><br>
+
+    <!-- Header -->
+    <header class="intro-header">
+      <div class="container">
+        <div class="intro-message text-center" style="margin-top:10px;">
+          <h2>Welcome to Crowd Bank - Central Mortgage Verification System</h2>
+          <!--<h4></h4>-->
+          <hr class="intro-divider">
+          <div class="row text-center">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="file-hash" name="hash" placeholder="Hash of File to verify" value="">
+              <button type="submit" class="btn btn-default" onclick="verifyData()">Verify Now</button>
+            </div>
+          </div>
+          <hr class="intro-divider">
+          <div class="row" id="mortgageDetails" style="visibility:hidden;">
+            <div class="col-sm-6">
+              <iframe id="pdfRenderer" width="100%" height="400px"></iframe>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title">Current Owners of this Mortgage</h4>
+                  <ol class="list-group" id="mortgage-owner-list">
+                    <li class="list-group-item">0x5195f832b29a1533dec69977e6952bb52cabb159</li>
+                    <li class="list-group-item">0x5195f832b29a1533dec69977e6952bb52cabb159</li>
+                    <li class="list-group-item">0x5195f832b29a1533dec69977e6952bb52cabb159</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.10.0/js/md5.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.108/pdf.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="verify.js"></script>
+</html>
